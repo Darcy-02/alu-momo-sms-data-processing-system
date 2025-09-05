@@ -1,1 +1,3 @@
-# alu-momo-sms-data-processing-system
+#team name: G-Ten
+#project description
+#member list: Mbanza Teta Darcy, Aderline Gashugi, Henriette Biziyaremye 
