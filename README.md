@@ -28,5 +28,5 @@ We use an **ETL pipeline** to extract, transform, and load data into a database.
 We are following **Agile** practices to organize and manage tasks using a Scrum board.
 
 **Scrum Board Link:**  
-[🔗 View Scrum Board](<INSERT_BOARD_LINK_HERE>)
+[🔗 View Scrum Board](https://trello.com/b/915F2Fcc)
 
