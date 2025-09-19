@@ -31,7 +31,59 @@ We are following **Agile** practices to organize and manage tasks using a Scrum 
 [🔗 View Scrum Board](https://trello.com/b/915F2Fcc)
 
 
-SQL → JSON Mapping
+# 🗄️ Database Documentation
+Our database is structured to capture **users, their phone numbers, MoMo transactions, transaction categories, and system logs**. This separation of entities ensures data normalization, avoids redundancy, and maintains consistency when processing large volumes of transactions. For instance:
+
+- **Users and Phones** are separated into `USERS` and `USER_PHONES` tables because a user may have multiple phone numbers.  
+- **Transactions** are stored in the `TRANSACTIONS` table, with foreign keys referencing both the **sender** and **receiver**.  
+- **Categories** are stored in `TRANSACTION_CATEGORIES` to allow flexible classification of transactions (e.g., airtime, bill payment, transfer).  
+- **Logs** are captured in `SYSTEM_LOGS` to track processing history.  
+---
+
+## 📑 Data Dictionary  
+
+### USERS
+| Column       | Type         | Description                     |
+|--------------|-------------|---------------------------------|
+| user_id (PK) | INT AUTO     | Unique identifier for a user    |
+| user_name    | VARCHAR(100) | Name of the user                |
+| email        | VARCHAR(150) | User email (optional)           |
+| created_at   | TIMESTAMP    | Account creation timestamp      |
+
+### USER_PHONES
+| Column             | Type         | Description                                |
+|--------------------|-------------|--------------------------------------------|
+| phone_id (PK)      | INT AUTO     | Unique identifier for a phone record       |
+| user_id (FK)       | INT          | References USERS(user_id)                  |
+| phone_number       | VARCHAR(20)  | Phone number linked to the user            |
+
+### TRANSACTION_CATEGORIES
+| Column             | Type         | Description                                |
+|--------------------|-------------|--------------------------------------------|
+| category_id (PK)   | INT AUTO     | Unique identifier for category             |
+| category_name      | VARCHAR(50)  | Name of category (e.g., Transfer, Airtime) |
+| description        | TEXT         | Additional details about the category      |
+
+### TRANSACTIONS
+| Column             | Type         | Description                                |
+|--------------------|-------------|--------------------------------------------|
+| transaction_id (PK)| INT AUTO     | Unique identifier for a transaction        |
+| amount             | DECIMAL(10,2)| Amount transacted                          |
+| transaction_date   | TIMESTAMP    | Date and time of transaction               |
+| sender_id (FK)     | INT          | References USERS(user_id) – sender         |
+| receiver_id (FK)   | INT          | References USERS(user_id) – receiver       |
+| category_id (FK)   | INT          | References TRANSACTION_CATEGORIES          |
+
+### SYSTEM_LOGS
+| Column             | Type         | Description                                |
+|--------------------|-------------|--------------------------------------------|
+| log_id (PK)        | INT AUTO     | Unique identifier for a log                |
+| log_message        | TEXT         | Description of the processing step         |
+| log_stamp          | TIMESTAMP    | When the log entry was created             |
+
+---
+
+## 💾 SQL → JSON Mapping  
 
 | **SQL Table.Column**                   | **JSON Field**                  |
 | -------------------------------------- | ------------------------------- |
