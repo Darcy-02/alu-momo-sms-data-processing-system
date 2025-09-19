@@ -30,3 +30,26 @@ We are following **Agile** practices to organize and manage tasks using a Scrum 
 **Scrum Board Link:**  
 [🔗 View Scrum Board](https://trello.com/b/915F2Fcc)
 
+
+SQL → JSON Mapping
+
+| **SQL Table.Column**                   | **JSON Field**                  |
+| -------------------------------------- | ------------------------------- |
+| `USERS.user_id`                        | `user.user_id`                  |
+| `USERS.user_name`                      | `user.user_name`                |
+| `USERS.email`                          | `user.email`                    |
+| `USERS.created_at`                     | `user.created_at`               |
+| `USER_PHONES.phone_number`             | `user.phones[]`                 |
+| `TRANSACTIONS.transaction_id`          | `transaction.transaction_id`    |
+| `TRANSACTIONS.amount`                  | `transaction.amount`            |
+| `TRANSACTIONS.transaction_date`        | `transaction.transaction_date`  |
+| `TRANSACTIONS.sender_id`               | `sender.user_id`                |
+| `TRANSACTIONS.receiver_id`             | `receiver.user_id`              |
+| `TRANSACTIONS.category_id`             | `category.category_id`          |
+| `TRANSACTION_CATEGORIES.category_name` | `category.category_name`        |
+| `TRANSACTION_CATEGORIES.description`   | `category.description`          |
+| `SYSTEM_LOGS.log_id`                   | `processing_logs[].log_id`      |
+| `SYSTEM_LOGS.log_message`              | `processing_logs[].log_message` |
+| `SYSTEM_LOGS.log_stamp`                | `processing_logs[].log_stamp`   |
+
+
