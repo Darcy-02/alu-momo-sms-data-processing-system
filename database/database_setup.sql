@@ -61,8 +61,7 @@ CREATE TABLE TRANSACTIONS (
         FOREIGN KEY (category_id) REFERENCES TRANSACTION_CATEGORIES(category_id) 
         ON DELETE RESTRICT ON UPDATE CASCADE,
     
-    CONSTRAINT chk_amount_positive CHECK (amount > 0),
-    CONSTRAINT chk_sender_receiver_different CHECK (sender_id != receiver_id)
+    CONSTRAINT chk_amount_positive CHECK (amount > 0)
 );
 
 -- 5. SYSTEM_LOGS Table
