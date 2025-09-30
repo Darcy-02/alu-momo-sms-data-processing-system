@@ -105,3 +105,15 @@ Our database is structured to capture **users, their phone numbers, MoMo transac
 | `SYSTEM_LOGS.log_stamp`                | `processing_logs[].log_stamp`   |
 
 
+REFLECTION 
+
+Reflection on Search Performance
+
+Linear search checks each element one by one, so the time grows with the number of records (O(n)). 
+Dictionary lookup uses a hash table, so it can jump directly to the element’s memory address, making 
+it average O(1) time. This explains why dictionary lookups are much faster than linear search, especially 
+as the dataset grows.
+
+Another data structure we could use is a Binary Search Tree (BST). If the dataset is sorted by ID, 
+we can apply binary search with O(log n) time complexity, which is more efficient than linear search 
+but not as fast as hash maps (dict). Hash maps remain the most practical choice for quick lookups.
